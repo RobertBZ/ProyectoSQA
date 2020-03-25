@@ -1,4 +1,0 @@
-{
-	correo: admin@admin.com
-	contraseña: 123admin
-}
