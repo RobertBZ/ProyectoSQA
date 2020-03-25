@@ -11,6 +11,7 @@ import { DrinksListComponent } from './Pages/drinks-list/drinks-list.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FirebaseModule } from './firebase/firebase.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     DrinksListComponent,
   ],
   imports: [
+    FirebaseModule,
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot()
