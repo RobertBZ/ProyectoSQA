@@ -18,3 +18,5 @@ import { FirebaseModule } from './firebase/firebase.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//prueba
