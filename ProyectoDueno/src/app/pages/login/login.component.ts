@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Router } from '@angular/router';
-
-/** Control de errores */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  
   // Validacion de forms
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -37,7 +27,6 @@ export class LoginComponent implements OnInit {
     Validators.required
   ]);
   matcher = new MyErrorStateMatcher();
-
   // Funciones de autentificacion
   signIn() {
     this.authService
@@ -50,5 +39,12 @@ export class LoginComponent implements OnInit {
         console.log('Something is wrong:',err.message );
       });
   }
+}
 
+/** Control de errores */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
