@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
-/** Error when invalid control is dirty, touched, or submitted. */
+/** Control de errores */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,20 +18,26 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor( private authService : AuthService ) { }
 
   ngOnInit() {
   }
-
+  //Validacion de forms
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   passwordFormControl = new FormControl('', [
     Validators.required
   ]);
-
   matcher = new MyErrorStateMatcher();
+  //Funciones de autentificacion
+  signIn() {
+    this.email = ''; 
+    this.password = '';
+  }
 
 }
