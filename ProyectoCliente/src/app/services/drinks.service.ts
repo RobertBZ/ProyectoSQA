@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Drink, IDrink } from './../models/IDrink';
+import { IDrink } from './../models/IDrink';
 import { DBService } from './db.service';
 
 @Injectable({
@@ -7,8 +7,24 @@ import { DBService } from './db.service';
 })
 export class DrinksService {
 
+  collectionName : string = 'Drinks';
+
   constructor(private dbService : DBService) { }
 
-  
+  createClient( drink : IDrink ) {
+    return this.dbService.createDocument<IDrink>( this.collectionName, drink );
+  }
+
+  readClients() {
+    return this.dbService.readDocuments<IDrink>( this.collectionName );
+  }
+
+  updateClient( drink : IDrink ) {
+    return this.dbService.updateDocument<IDrink>( this.collectionName, drink );
+  }
+
+  deleteClient( drink : IDrink ){
+    return this.dbService.deleteDocument(this.collectionName, drink );
+  }
 
 }
