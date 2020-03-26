@@ -11,5 +11,20 @@ export class ClientsService {
 
   constructor(private dbService : DBService) { }
 
+  createClient( client : IClient, id : string ) {
+    return this.dbService.createDocumentWithID<IClient>( this.collectionName, client );
+  }
+
+  readClients() {
+    return this.dbService.readDocuments<IClient>( this.collectionName );
+  }
+
+  updateClient( id : string, client : IClient ) {
+    return this.dbService.updateDocument<IClient>( this.collectionName, client );
+  }
+
+  deleteClient( client : IClient ){
+    return this.dbService.deleteDocument(this.collectionName, client );
+  }
 
 }
