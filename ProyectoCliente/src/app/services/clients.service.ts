@@ -7,8 +7,9 @@ import { DBService } from './db.service';
 })
 export class ClientsService {
 
+  collectionName : string = 'Clients';
+
   constructor(private dbService : DBService) { }
 
-  
 
 }
