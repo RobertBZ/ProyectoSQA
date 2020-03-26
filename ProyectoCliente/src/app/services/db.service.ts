@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class DBService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor( private firestore: AngularFirestore ) { }
 
   createDocument<T extends IModel>( 
     collectionName : string, 
