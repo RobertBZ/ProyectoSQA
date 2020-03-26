@@ -7,13 +7,11 @@
     padding:60px 50px 40px 50px;
     width:100%;
     border-radius:10px;
-    transform:scale(1);
-    -webkit-transform:scale(1);
-    -ms-transform:scale(1);
+    transform: translate(-50%, -50%);
     z-index:5;
     max-width:330px;
-    top: 30%;
-    left: 38%;
+    top: 50%;
+    left: 50%;
 }
 .login-wrapper{
     min-width:100%;

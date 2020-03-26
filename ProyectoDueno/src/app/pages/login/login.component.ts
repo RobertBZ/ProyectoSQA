@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  //Validacion de forms
+  
+  // Validacion de forms
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
     Validators.required
   ]);
   matcher = new MyErrorStateMatcher();
-  //Funciones de autentificacion
+
+  // Funciones de autentificacion
   signIn() {
     this.email = ''; 
     this.password = '';
