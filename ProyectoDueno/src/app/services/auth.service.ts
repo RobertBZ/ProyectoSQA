@@ -11,17 +11,18 @@ export class AuthService {
 
   constructor( private angularFireAuth : AngularFireAuth ) { 
     this.userData = angularFireAuth.authState;
+    angularFireAuth.auth.useDeviceLanguage();
   }
 
   SignIn(email: string, password: string) {
     this.angularFireAuth
       .auth
       .signInWithEmailAndPassword(email, password)
-      .then(res => {
+      .then(() => {
         console.log('Successfully signed in!');
       })
       .catch(err => {
-        console.log('Something is wrong:',err.message);
+        console.log('Something is wrong:',err.message );
       });
   }
 
@@ -29,5 +30,17 @@ export class AuthService {
     this.angularFireAuth
       .auth
       .signOut();
-  }  
+  } 
+
+  SendEmailVerification(email) {
+    this.angularFireAuth
+      .auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('Email sent');
+      }).catch((err) => {
+        console.log('An error happened:', err.message );
+      });
+  }
+
 }
