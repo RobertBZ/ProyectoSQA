@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { FirebaseModule } from './firebase/firebase.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
   ],
   imports: [
     AngularMaterialModule,
+    FirebaseModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule
