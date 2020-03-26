@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   loginForm: any;
 
-  constructor( private authService : AuthService ) {
+  constructor( private authService : AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       Email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9-]+\x2e[a-z]{2,4}')]),
       Password: new FormControl('',[Validators.required])
@@ -29,7 +30,20 @@ export class LoginComponent implements OnInit {
   }
   // Funciones de autentificacion
   signIn() {
-    this.email = ''; 
-    this.password = '';
+    if(this.loginForm.status === 'VALID'){
+      this.authService
+      .signIn( this.Email.value, this.Password.value )
+      .then(() => {
+        this.router.navigate(['/customers']);
+        console.log("Sesion iniciada ", this.authService.userData);
+      })
+      .catch(err => {
+        console.log('Something is wrong:',err.message );
+      });
+    }
+    else{
+      this.Email.touched = true;
+      this.Password.touched = true;
+    }
   }
 }

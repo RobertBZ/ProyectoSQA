@@ -3,28 +3,24 @@
       <mat-card-header>
         <mat-card-title>Iniciar Sesión</mat-card-title>
       </mat-card-header>
-      <form class="login-form" formGroup="loginForm" (ngSubmit)="signIn()">
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="signIn()">
         <mat-card-content>
             <mat-form-field class="field-full-width">
                 <mat-label>Correo: </mat-label>
                 <input matInput type="text" formControlName="Email" placeholder="Ejemplo: test@correo.com">
-                <div *ngIf="Email.touched && Email.errors">
-                    <mat-error *ngIf="Email.errors.pattern">
-                        Introduzca una dirección de correo valida!
-                    </mat-error>
-                </div>
+                <mat-error *ngIf="Email.touched && Email.errors">
+                    Introduzca una dirección de correo valida!
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="field-full-width">
                 <mat-label>Contraseña: </mat-label>
                 <input matInput type="password" formControlName="Password" placeholder="**********">
-                <div *ngIf="Password.touched && Password.errors">
-                    <mat-error *ngIf="Password.errors.pattern">
-                        Introduzca una contraseña valida!
-                    </mat-error>
-                </div>
+                <mat-error *ngIf="Password.touched && Password.errors">
+                    Introduzca una contraseña valida!
+                </mat-error>
             </mat-form-field>
         </mat-card-content>
-        <button type="submit" mat-stroked-button color="primary" class="btn-block">Iniciar Sesión</button>
+        <button type="submit" mat-raised-button color="primary" class="btn-block">Iniciar Sesión</button>
       </form>
       <button mat-button class="btn-block mt-5" >Olvidaste tu contraseña?</button>
     </mat-card>

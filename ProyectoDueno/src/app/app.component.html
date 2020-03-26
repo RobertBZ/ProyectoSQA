@@ -1,19 +1,17 @@
-<div *ngIf='!userActivo'>
+<div *ngIf='authService.userData == null'>
     <app-login></app-login>
 </div>
 
-<mat-drawer-container class="example-container" autosize *ngIf='userActivo'>
+<mat-drawer-container class="example-container" autosize *ngIf='authService.userData'>
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <mat-nav-list role="navigation">
-            <mat-list-item role="listitem" [routerLink]="['login']">Login</mat-list-item>
-            <mat-divider></mat-divider>
             <mat-list-item role="listitem" [routerLink]="['customers']">Clientes</mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item role="listitem" [routerLink]="['drinks']">Bebidas</mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item role="listitem" [routerLink]="['sales']">Ventas</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item role="listitem">CERRAR SESIÓN</mat-list-item>
+            <mat-list-item role="listitem" (click)="signOut()">CERRAR SESIÓN</mat-list-item>
         </mat-nav-list>
     </mat-drawer>
 
