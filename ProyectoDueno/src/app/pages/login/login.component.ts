@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 /** Control de errores */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -9,6 +10,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor( private authService : AuthService ) { }
+  constructor( private authService : AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -38,8 +40,15 @@ export class LoginComponent implements OnInit {
 
   // Funciones de autentificacion
   signIn() {
-    this.email = ''; 
-    this.password = '';
+    this.authService
+      .signIn( this.email, this.password )
+      .then(() => {
+        console.log('Successfully signed in!');
+        this.router.navigate(['/customers']);
+      })
+      .catch(err => {
+        console.log('Something is wrong:',err.message );
+      });
   }
 
 }

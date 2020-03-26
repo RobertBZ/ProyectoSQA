@@ -14,33 +14,22 @@ export class AuthService {
     angularFireAuth.auth.useDeviceLanguage();
   }
 
-  SignIn(email: string, password: string) {
-    this.angularFireAuth
+  signIn(email: string, password: string) {
+    return this.angularFireAuth
       .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('Successfully signed in!');
-      })
-      .catch(err => {
-        console.log('Something is wrong:',err.message );
-      });
+      .signInWithEmailAndPassword(email, password);
   }
 
-  SignOut() {
-    this.angularFireAuth
+  signOut() {
+    return this.angularFireAuth
       .auth
       .signOut();
   } 
 
-  SendEmailVerification(email) {
-    this.angularFireAuth
+  sendEmailVerification(email) {
+    return this.angularFireAuth
       .auth
-      .sendPasswordResetEmail(email)
-      .then(() => {
-        console.log('Email sent');
-      }).catch((err) => {
-        console.log('An error happened:', err.message );
-      });
+      .sendPasswordResetEmail(email);
   }
 
 }
