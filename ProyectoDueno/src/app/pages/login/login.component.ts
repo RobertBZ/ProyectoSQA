@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-
-/** Control de errores */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -25,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  
   // Validacion de forms
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -35,11 +26,17 @@ export class LoginComponent implements OnInit {
     Validators.required
   ]);
   matcher = new MyErrorStateMatcher();
-
   // Funciones de autentificacion
   signIn() {
     this.email = ''; 
     this.password = '';
   }
+}
 
+/** Control de errores */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
