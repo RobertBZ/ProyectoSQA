@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="login-wrapper">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Iniciar Sesión</mat-card-title>
+      </mat-card-header>
+      <form class="login-form">
+        <mat-card-content>
+            <mat-form-field class="field-full-width">
+                <mat-label>Correo: </mat-label>
+                <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ejemplo: test@correo.com">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Introduzca una dirección de correo valida!
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    El correo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <mat-label>Contraseña: </mat-label>
+                <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" placeholder="**********">
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    La contraseña es requerida <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="primary" class="btn-block">Iniciar Sesión</button>
+      </form>
+    </mat-card>
+</div>

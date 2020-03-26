@@ -26,7 +26,7 @@ export class Usage implements IUsage {
         orderDate: Date, 
         photo: string, 
         price: number
-    ){
+    ) {
         this.Amount = amount;
         this.ClientID = clientID;
         this.Name = name;
