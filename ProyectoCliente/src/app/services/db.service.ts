@@ -39,7 +39,7 @@ export class DBService {
   updateDocument<T extends IModel>(
     collectionName: string, 
     data : T
-  ){
+  ) {
     return this.firestore.doc<T>(collectionName + '/' + data.Id).update({...data});
   }
 

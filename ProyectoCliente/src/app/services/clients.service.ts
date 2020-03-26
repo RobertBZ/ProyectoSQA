@@ -11,7 +11,7 @@ export class ClientsService {
 
   constructor(private dbService : DBService) { }
 
-  createClient( client : IClient, id : string ) {
+  createClient( client : IClient ) {
     return this.dbService.createDocumentWithID<IClient>( this.collectionName, client );
   }
 
@@ -19,7 +19,7 @@ export class ClientsService {
     return this.dbService.readDocuments<IClient>( this.collectionName );
   }
 
-  updateClient( id : string, client : IClient ) {
+  updateClient( client : IClient ) {
     return this.dbService.updateDocument<IClient>( this.collectionName, client );
   }
 
