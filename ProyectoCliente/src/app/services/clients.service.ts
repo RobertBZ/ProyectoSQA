@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Drink, IDrink } from './../models/IDrink';
+import { Client, IClient } from './../models/IClient';
 import { DBService } from './db.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DrinksService {
+export class ClientsService {
 
   constructor(private dbService : DBService) { }
 
