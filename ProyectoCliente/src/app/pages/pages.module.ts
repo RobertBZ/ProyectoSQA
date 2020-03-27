@@ -6,13 +6,15 @@ import { CommonModule } from '@angular/common';
 import { FirebaseModule } from '../firebase';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { DrinkDetailsComponent } from './drink-details/drink-details.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
-    DrinksListComponent
+    DrinksListComponent,
+    DrinkDetailsComponent
+  ],
+  entryComponents: [
   ],
   imports: [
     CommonModule,

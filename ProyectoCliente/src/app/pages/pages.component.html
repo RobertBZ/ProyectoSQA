@@ -7,6 +7,7 @@
             <mat-label style="margin-right: 2%;">
                 Saldo: {{Client.Credits}} Bs.
             </mat-label>
+            <button mat-raised-button color="accent" (click)="signOut()">Salir</button>
         </mat-toolbar>
         <div class="example-sidenav-content">
             <router-outlet></router-outlet>

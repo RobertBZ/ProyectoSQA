@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pages',
@@ -7,12 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   Client : any =
   { "Name" : "Jesus", "LastName" : "Aguilar", "Credits" : "2000"}
 
   ngOnInit() {
+  }
+
+  signOut(){
+    this.authService.signOut().then(() => {
+      this.router.navigate(['/login']);
+      console.log( "Signed Out" );
+    })
+    .catch(err => {
+      console.log( 'Something is wrong:', err.message );
+    });
   }
 
 }
