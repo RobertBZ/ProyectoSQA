@@ -1,1 +1,16 @@
-<p>pages works!</p>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <mat-label style="float: left; margin-left: 2%; margin-right: auto;">
+                {{Client.Name}} {{Client.LastName}}
+            </mat-label>
+            <mat-label style="margin-right: 2%;">
+                Saldo: {{Client.Credits}} Bs.
+            </mat-label>
+            <button mat-raised-button color="accent" (click)="signOut()">Salir</button>
+        </mat-toolbar>
+        <div class="example-sidenav-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

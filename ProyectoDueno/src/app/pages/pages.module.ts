@@ -9,6 +9,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { FirebaseModule } from '../firebase';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.component';
+import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       CustomersPageComponent,
       DrinksPageComponent,
       SalesPageComponent,
+      CustomerModalComponent,
+      CustomerDeleteModalComponent
     ],
     imports: [
       PagesRoutingModule,
@@ -23,7 +27,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       FirebaseModule,
       FormsModule,
       ReactiveFormsModule
-    ]
+    ],
+    entryComponents: [
+      CustomerModalComponent,
+      CustomerDeleteModalComponent
+    ],
 })
 
 export class PagesModule { }

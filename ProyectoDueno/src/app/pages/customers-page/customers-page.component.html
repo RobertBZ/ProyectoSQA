@@ -1,5 +1,4 @@
-
-<button mat-raised-button class="styleButton" color="primary">NUEVO</button>
+<button mat-raised-button class="styleButton" color="primary" (click)="showCreateCustomerModal()">NUEVO</button>
 
 <table mat-table [dataSource]="customers" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
@@ -7,29 +6,35 @@
     <mat-cell *matCellDef="let client"> {{client.Name}} </mat-cell>
   </ng-container>
 
-  <!-- Name Column -->
+  <!-- Name Columna -->
   <ng-container matColumnDef="lastname">
     <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
     <mat-cell *matCellDef="let client"> {{client.Lastname}} </mat-cell>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="email">
+  <!-- username Columna -->
+  <ng-container matColumnDef="username">
     <mat-header-cell *matHeaderCellDef> Nombre de usuario </mat-header-cell>
     <mat-cell *matCellDef="let client"> {{client.Username}} </mat-cell>
   </ng-container>
 
-  <!-- Symbol Column -->
+  <!-- Credito columna -->
   <ng-container matColumnDef="credit">
     <mat-header-cell *matHeaderCellDef> Credito </mat-header-cell>
     <mat-cell *matCellDef="let client"> {{client.Credit}} </mat-cell>
   </ng-container>
 
+  <!-- Email columna -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.Email}} </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="customersColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: customersColumns;" [matMenuTriggerFor]="menu">
-    <mat-menu #menu="matMenu" >
-      <button mat-menu-item (click)="showData(row)">Item 1</button>
-      <button mat-menu-item (click)="showData(row)">Item 2</button>
+    <mat-menu #menu="matMenu" yPosition="above" xPosition="before">
+      <button mat-menu-item (click)="showEditCustomerModal(row)">EDITAR</button>
+      <button mat-menu-item (click)="showDeleteCustomerModal(row)">ELIMINAR</button>
     </mat-menu>
   </mat-row>
   

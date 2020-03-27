@@ -1,9 +1,27 @@
-<h1 style="text-align: center;">Bebidas</h1>
-<mat-grid-list cols="7" rowHeight="6:7">
-    <mat-grid-tile *ngFor="let bebida of Bebidas">
-        <mat-card style="background-color: white;">
-            <img mat-card-lg-image src={{bebida.URLFoto}}>
-            <mat-card-title style="text-align: center; margin-top: 10%; color:black">{{bebida.Nombre}}</mat-card-title>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+<div style="margin-top: 2%;">
+    <mat-grid-list cols="2" rowHeight="3:0.5">
+        <mat-grid-tile>
+            <div class="grid-title">
+                <mat-card-title style="font-size: 300%;">Bebidas</mat-card-title>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="grid-subtitle">
+                <mat-card-subtitle style="font-size: 200%;">Seleccione una bebida</mat-card-subtitle>
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>
+<mat-divider></mat-divider>
+<div style="margin-top: 2%;">
+    <mat-grid-list style="margin-top: auto;" [cols]="isMobile ? 2 : 5">
+        <mat-grid-tile *ngFor="let bebida of Bebidas">
+            <mat-card>
+                <img mat-card-md-image src={{bebida.URLFoto}}>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">Selecionar</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
