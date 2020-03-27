@@ -20,14 +20,18 @@ export class LoginComponent implements OnInit {
       Password: new FormControl('',[Validators.required])
     }); 
   }
+
   ngOnInit() {
   }
+
   get Email() {
     return this.loginForm.get("Email");
   }
+  
   get Password() {
     return this.loginForm.get("Password");
   }
+
   // Funciones de autentificacion
   signIn() {
     if(this.loginForm.status === 'VALID'){
@@ -35,7 +39,7 @@ export class LoginComponent implements OnInit {
       .signIn( this.Email.value, this.Password.value )
       .then(() => {
         this.router.navigate(['/home/customers']);
-        console.log("Sesion iniciada ", this.authService.userData);
+        console.log("Signed In", this.authService.userData);
       })
       .catch(err => {
         console.log('Something is wrong:',err.message );

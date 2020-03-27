@@ -18,14 +18,12 @@ export class PagesComponent implements OnInit {
   }
 
   signOut(){
-    console.log("Hola");
     this.authService.signOut().then(() => {
-      this.authService.userData = null;
       this.router.navigate(['/login']);
-      console.log("Sesion cerrada ", this.authService.userData);
+      console.log( "Signed Out", this.authService.userData );
     })
     .catch(err => {
-      console.log('Something is wrong:',err.message );
+      console.log( 'Something is wrong:', err.message );
     });
   }
 
