@@ -13,15 +13,18 @@ const routes: Routes = [
   },
   {
     path: 'customers',
-    component: CustomersPageComponent
+    component: CustomersPageComponent,
+    outlet: 'sidebar'
   },
   {
     path: 'drinks',
-    component: DrinksPageComponent
+    component: DrinksPageComponent,
+    outlet: 'sidebar'
   },
   {
     path: 'sales',
-    component: SalesPageComponent
+    component: SalesPageComponent,
+    outlet: 'sidebar'
   },
   {
     path: '**',

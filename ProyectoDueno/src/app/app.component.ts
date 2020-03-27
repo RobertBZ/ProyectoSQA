@@ -11,10 +11,15 @@ export class AppComponent {
   title = 'ProyectoDueno';
 
   constructor(public authService: AuthService, private router: Router) {
+    if(this.authService.userData){
+      this.router.navigate(['/customers']);
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
   }
 
   signOut(){
-    console.log("Hola");
     this.authService.signOut().then(() => {
       this.authService.userData = null;
       this.router.navigate(['/login']);
