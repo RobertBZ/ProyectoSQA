@@ -1,5 +1,5 @@
 
-<button mat-raised-button class="styleButton" color="primary">NUEVO</button>
+<button mat-raised-button class="styleButton" color="primary" (click)="showCreateCustomerModal()">NUEVO</button>
 
 <table mat-table [dataSource]="customers" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
