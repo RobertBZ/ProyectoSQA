@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.component';
 import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
 import { CommonModule } from '@angular/common';
+import { DrinkModalComponent } from '../modals/drink-modal/drink-modal.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
       DrinksPageComponent,
       SalesPageComponent,
       CustomerModalComponent,
-      CustomerDeleteModalComponent
+      CustomerDeleteModalComponent,
+      DrinkModalComponent
     ],
     imports: [
       PagesRoutingModule,
@@ -28,11 +30,12 @@ import { CommonModule } from '@angular/common';
       FirebaseModule,
       FormsModule,
       CommonModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
     ],
     entryComponents: [
       CustomerModalComponent,
-      CustomerDeleteModalComponent
+      CustomerDeleteModalComponent,
+      DrinkModalComponent
     ],
 })
 
