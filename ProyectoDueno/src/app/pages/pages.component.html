@@ -1,0 +1,24 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <mat-nav-list role="navigation">
+            <mat-list-item role="listitem" [routerLink]="['customers']">Clientes</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem" [routerLink]="['drinks']">Bebidas</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem" [routerLink]="['sales']">Ventas</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem" (click)="signOut()">CERRAR SESIÓN</mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">view_headline</mat-icon>
+            </button>
+        </mat-toolbar>
+        <div class="example-sidenav-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

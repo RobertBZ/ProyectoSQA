@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.authService
       .signIn( this.Email.value, this.Password.value )
       .then(() => {
-        this.router.navigate(['/customers']);
+        this.router.navigate(['/home/customers']);
         console.log("Sesion iniciada ", this.authService.userData);
       })
       .catch(err => {
