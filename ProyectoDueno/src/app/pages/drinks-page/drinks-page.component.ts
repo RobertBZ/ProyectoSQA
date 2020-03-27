@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DrinksService } from 'src/app/services/drinks.service';
 import { MatDialog } from '@angular/material';
 import { DrinkModalComponent } from 'src/app/modals/drink-modal/drink-modal.component';
+import { DrinkEditModalComponent } from 'src/app/modals/drink-edit-modal/drink-edit-modal.component';
 
 @Component({
   selector: 'app-drinks-page',
@@ -35,14 +36,14 @@ export class DrinksPageComponent implements OnInit {
   }
 
   showCreateDrinkModal() {
-    this.dialog.open(DrinkModalComponent, {
+    this.dialog.open(DrinkEditModalComponent, {
       width: '500px',
       data: { state: true }
     });
   }
 
   showEditDrinkModal(drink : Drink) {
-    this.dialog.open(DrinkModalComponent, {
+    this.dialog.open(DrinkEditModalComponent, {
       width: '500px',
       data: { state: true }
     });
