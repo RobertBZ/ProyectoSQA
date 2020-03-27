@@ -15,6 +15,7 @@ import { DrinkDetailsComponent } from './drink-details/drink-details.component';
     DrinkDetailsComponent
   ],
   entryComponents: [
+    DrinkDetailsComponent
   ],
   imports: [
     CommonModule,

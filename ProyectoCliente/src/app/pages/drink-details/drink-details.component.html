@@ -1,1 +1,14 @@
-<p>drink-details works!</p>
+<div>
+    <mat-grid-list cols="2" rowHeight="1:1.6">
+        <mat-grid-tile>
+            <img mat-card-image style="width: 90%; " src={{drink.Photo}}>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card style="width: 80%; height: 90%; background-color: dimgrey; text-align: center;">
+                <mat-card-title>
+                    {{ drink.Name }}
+                </mat-card-title>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

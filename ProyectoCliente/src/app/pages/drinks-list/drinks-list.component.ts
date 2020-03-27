@@ -1,7 +1,10 @@
-import { Client } from './../../models/IClient';
 import { Component, OnInit } from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { DrinkDetailsComponent } from './../drink-details/drink-details.component';
+import { DrinksService } from './../../services/drinks.service';
+import { Drink } from './../../models/IDrink';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './drinks-list.component.html',
@@ -9,23 +12,11 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 })
 export class DrinksListComponent implements OnInit {
   public isMobile: boolean = false;
-  Bebidas : any =
-  [
-    {"Nombre" : "Fanta", "URLFoto" : "https://upload.wikimedia.org/wikipedia/commons/0/03/Logo_Fanta_2016.png"},
-    {"Nombre" : "Coca-Cola", "URLFoto" : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Coca-Cola_bottle_cap.svg/1200px-Coca-Cola_bottle_cap.svg.png"},
-    {"Nombre" : "Pepsi", "URLFoto" : "https://vignette.wikia.nocookie.net/mensajessubliminales/images/5/58/2000px-Pepsi_logo_2014.svg.png/revision/latest?cb=20181128210951&path-prefix=es"},
-    {"Nombre" : "Sprite", "URLFoto" : "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1f2.png"},
-    {"Nombre" : "Dr. Pepper", "URLFoto" : "https://upload.wikimedia.org/wikipedia/en/thumb/1/19/Dr_Pepper_modern.svg/1200px-Dr_Pepper_modern.svg.png"},
-    {"Nombre" : "Fanta", "URLFoto" : "https://upload.wikimedia.org/wikipedia/commons/0/03/Logo_Fanta_2016.png"},
-    {"Nombre" : "Coca-Cola", "URLFoto" : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Coca-Cola_bottle_cap.svg/1200px-Coca-Cola_bottle_cap.svg.png"},
-    {"Nombre" : "Pepsi", "URLFoto" : "https://vignette.wikia.nocookie.net/mensajessubliminales/images/5/58/2000px-Pepsi_logo_2014.svg.png/revision/latest?cb=20181128210951&path-prefix=es"},
-    {"Nombre" : "Sprite", "URLFoto" : "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c1f2.png"},
-    {"Nombre" : "Dr. Pepper", "URLFoto" : "https://upload.wikimedia.org/wikipedia/en/thumb/1/19/Dr_Pepper_modern.svg/1200px-Dr_Pepper_modern.svg.png"},
-  ];
+  drinks : Observable<Drink[]>;
   Client : any =
   { "Name" : "Jesus", "LastName" : "Aguilar", "Credits" : "2000"}
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, public dialog: MatDialog, private drinkService: DrinksService) {
     breakpointObserver.observe([
       Breakpoints.Handset
     ]).subscribe(result => {
@@ -34,7 +25,18 @@ export class DrinksListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.drinks = this.drinkService.readDrinks();
+  }
 
+  openDetails(drink){
+    let dialogRef = this.dialog.open(DrinkDetailsComponent, {
+      width: '90%',
+      height: '90%',
+      data: drink,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
