@@ -9,13 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { FirebaseModule } from './firebase/firebase.module';
 import { LoginComponent } from './pages/login/login.component';
-import { DrinkEditModalComponent } from './modals/drink-edit-modal/drink-edit-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DrinkEditModalComponent,
   ],
   imports: [
     AngularMaterialModule,
