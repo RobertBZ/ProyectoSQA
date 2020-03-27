@@ -3,7 +3,7 @@ import { IModel } from './IModel';
 export interface IClient extends IModel {
     Credit : number;
     Email : string;
-    LastName : string;
+    Lastname : string;
     Name : string;
     Username : string;
 }
@@ -13,18 +13,18 @@ export class Client implements IClient {
     Credit : number = 0;
     Email : string;
     IsDeleted : boolean = false;
-    LastName : string;
+    Lastname : string;
     Name : string;
     Username : string;
 
     constructor(  
         email : string, 
-        lastName : string, 
+        lastname : string, 
         name : string, 
         username : string 
     ) {
         this.Email = email;
-        this.LastName = lastName;
+        this.Lastname = lastname;
         this.Name = name;
         this.Username = username;
     }
