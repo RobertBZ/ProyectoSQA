@@ -29,7 +29,7 @@ export class CustomersPageComponent implements OnInit {
 
   showCreateCustomerModal() {
     this.dialog.open(CustomerModalComponent, {
-      width: '500px',
+      width: '300px',
       data: { state: true }
     });
   }
