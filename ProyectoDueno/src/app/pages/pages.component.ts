@@ -20,7 +20,7 @@ export class PagesComponent implements OnInit {
   signOut(){
     this.authService.signOut().then(() => {
       this.router.navigate(['/login']);
-      console.log( "Signed Out", this.authService.userData );
+      console.log( "Signed Out" );
     })
     .catch(err => {
       console.log( 'Something is wrong:', err.message );
