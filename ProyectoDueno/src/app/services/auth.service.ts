@@ -28,4 +28,8 @@ export class AuthService {
       .sendPasswordResetEmail(email);
   }
 
+  registryUser(email : string, password : string) {
+    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email,password);
+  }
+
 }

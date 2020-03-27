@@ -11,6 +11,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.component';
 import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/cu
       AngularMaterialModule,
       FirebaseModule,
       FormsModule,
+      CommonModule,
       ReactiveFormsModule
     ],
     entryComponents: [
