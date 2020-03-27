@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DrinksListComponent } from './drinks-list/drinks-list.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 const routes: Routes = [
   {
-    path: "drinks",
-    component: DrinksListComponent
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path : 'home' ,
+    loadChildren : () => import('./pages/pages.module').then(pages => pages.PagesModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
