@@ -9,6 +9,9 @@ export class PagesComponent implements OnInit {
 
   constructor() { }
 
+  Client : any =
+  { "Name" : "Jesus", "LastName" : "Aguilar", "Credits" : "2000"}
+
   ngOnInit() {
   }
 

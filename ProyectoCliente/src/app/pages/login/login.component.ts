@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.authService
       .signIn( this.Email.value, this.Password.value )
       .then(() => {
-        this.router.navigate(['/home/customers']);
+        this.router.navigate(['/home/drinks']);
         console.log("Signed In", this.authService.userData);
       })
       .catch(err => {
