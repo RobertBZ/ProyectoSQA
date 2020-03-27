@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Client } from 'src/app/models/IClient';
 import { MatDialog } from '@angular/material';
 import { CustomerModalComponent } from 'src/app/modals/customer-modal/customer-modal.component';
+import { CustomerDeleteModalComponent } from 'src/app/modals/customer-delete-modal/customer-delete-modal.component';
 
 @Component({
   selector: 'app-customers-page',
@@ -12,7 +13,7 @@ import { CustomerModalComponent } from 'src/app/modals/customer-modal/customer-m
 })
 export class CustomersPageComponent implements OnInit {
 
-  customersColumns: string[] = ['name', 'lastname', 'email', 'credit'];
+  customersColumns: string[] = ['name', 'lastname', 'email', 'username', 'credit'];
   customers : Observable<Client[]>;
   constructor(
     private customerService : CustomerService,
@@ -29,6 +30,20 @@ export class CustomersPageComponent implements OnInit {
 
   showCreateCustomerModal() {
     this.dialog.open(CustomerModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
+
+  showEditCustomerModal(customer : Client) {
+    this.dialog.open(CustomerModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
+
+  showDeleteCustomerModal(customer : Client){
+    this.dialog.open(CustomerDeleteModalComponent, {
       width: '500px',
       data: { state: true }
     });
