@@ -1,6 +1,8 @@
-import { Client } from './../../models/IClient';
+import { Client } from 'src/app/models/IClient';
 import { Component, OnInit } from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AuthService } from './../../services/auth.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,6 +10,8 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
   styleUrls: ['./drinks-list.component.scss']
 })
 export class DrinksListComponent implements OnInit {
+  client : Observable<Client>;
+
   public isMobile: boolean = false;
   Bebidas : any =
   [
@@ -25,7 +29,9 @@ export class DrinksListComponent implements OnInit {
   Client : any =
   { "Name" : "Jesus", "LastName" : "Aguilar", "Credits" : "2000"}
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor( breakpointObserver: BreakpointObserver, private authService : AuthService ) {
+    this.client = this.authService.userData;
+    console.log(this.client);
     breakpointObserver.observe([
       Breakpoints.Handset
     ]).subscribe(result => {
