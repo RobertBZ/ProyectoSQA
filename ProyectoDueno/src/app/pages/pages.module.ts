@@ -10,6 +10,7 @@ import { FirebaseModule } from '../firebase';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.component';
+import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.
       CustomersPageComponent,
       DrinksPageComponent,
       SalesPageComponent,
-      CustomerModalComponent
+      CustomerModalComponent,
+      CustomerDeleteModalComponent
     ],
     imports: [
       PagesRoutingModule,
@@ -27,7 +29,8 @@ import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.
       ReactiveFormsModule
     ],
     entryComponents: [
-      CustomerModalComponent
+      CustomerModalComponent,
+      CustomerDeleteModalComponent
     ],
 })
 
