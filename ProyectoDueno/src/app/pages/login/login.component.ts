@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   get Email() {
     return this.loginForm.get("Email");
   }
-  
+
   get Password() {
     return this.loginForm.get("Password");
   }
@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
       .signIn( this.Email.value, this.Password.value )
       .then(() => {
         this.router.navigate(['/home/customers']);
-        console.log("Signed In", this.authService.userData);
+        console.log("Signed In");
       })
       .catch(err => {
-        console.log('Something is wrong:',err.message );
+        console.log('Something is wrong:', err.message );
       });
     }
     else{
