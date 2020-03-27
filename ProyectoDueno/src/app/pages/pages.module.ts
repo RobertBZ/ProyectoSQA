@@ -13,6 +13,7 @@ import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.
 import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
 import { CommonModule } from '@angular/common';
 import { DrinkModalComponent } from '../modals/drink-modal/drink-modal.component';
+import { DrinkEditModalComponent } from '../modals/drink-edit-modal/drink-edit-modal.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { DrinkModalComponent } from '../modals/drink-modal/drink-modal.component
       SalesPageComponent,
       CustomerModalComponent,
       CustomerDeleteModalComponent,
-      DrinkModalComponent
+      DrinkModalComponent,
+      DrinkEditModalComponent
     ],
     imports: [
       PagesRoutingModule,
@@ -35,7 +37,8 @@ import { DrinkModalComponent } from '../modals/drink-modal/drink-modal.component
     entryComponents: [
       CustomerModalComponent,
       CustomerDeleteModalComponent,
-      DrinkModalComponent
+      DrinkModalComponent,
+      DrinkEditModalComponent
     ],
 })
 
