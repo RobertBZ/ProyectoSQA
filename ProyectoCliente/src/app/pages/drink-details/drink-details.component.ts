@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-drink-details',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrinkDetailsComponent implements OnInit {
 
-  constructor() { }
+  drink: any;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.drink = data;
+  }
 
   ngOnInit() {
   }
-
 }

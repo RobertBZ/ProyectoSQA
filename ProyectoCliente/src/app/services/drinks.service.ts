@@ -11,19 +11,19 @@ export class DrinksService {
 
   constructor(private dbService : DBService) { }
 
-  createClient( drink : IDrink ) {
+  createDrink( drink : IDrink ) {
     return this.dbService.createDocument<IDrink>( this.collectionName, drink );
   }
 
-  readClients() {
+  readDrinks() {
     return this.dbService.readDocuments<IDrink>( this.collectionName );
   }
 
-  updateClient( drink : IDrink ) {
+  updateDrinks( drink : IDrink ) {
     return this.dbService.updateDocument<IDrink>( this.collectionName, drink );
   }
 
-  deleteClient( drink : IDrink ){
+  deleteDrinks( drink : IDrink ){
     return this.dbService.deleteDocument(this.collectionName, drink );
   }
 

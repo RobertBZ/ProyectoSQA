@@ -11,6 +11,9 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerModalComponent } from '../modals/customer-modal/customer-modal.component';
 import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/customer-delete-modal.component';
+import { CommonModule } from '@angular/common';
+import { DrinkModalComponent } from '../modals/drink-modal/drink-modal.component';
+import { DrinkEditModalComponent } from '../modals/drink-edit-modal/drink-edit-modal.component';
 
 @NgModule({
     declarations: [
@@ -19,18 +22,23 @@ import { CustomerDeleteModalComponent } from '../modals/customer-delete-modal/cu
       DrinksPageComponent,
       SalesPageComponent,
       CustomerModalComponent,
-      CustomerDeleteModalComponent
+      CustomerDeleteModalComponent,
+      DrinkModalComponent,
+      DrinkEditModalComponent
     ],
     imports: [
       PagesRoutingModule,
       AngularMaterialModule,
       FirebaseModule,
       FormsModule,
-      ReactiveFormsModule
+      CommonModule,
+      ReactiveFormsModule,
     ],
     entryComponents: [
       CustomerModalComponent,
-      CustomerDeleteModalComponent
+      CustomerDeleteModalComponent,
+      DrinkModalComponent,
+      DrinkEditModalComponent
     ],
 })
 

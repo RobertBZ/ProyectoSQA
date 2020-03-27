@@ -1,29 +1,53 @@
 <p>Nuevo Cliente</p>
-<form  >
+<form [formGroup]="clientForm" (ngSubmit)="acction()">
+
     <mat-form-field class="full-width">
       <mat-label>Email</mat-label>
-      <input  matInput placeholder="">
+      <input matInput formControlName="Email" placeholder="">
+      <mat-error *ngIf="Email.touched && Email.errors">
+        Introduzca una dirección de correo valida!
+      </mat-error>
     </mat-form-field>
-    <br />
+
+    <mat-form-field class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="Password" placeholder="">
+      <mat-error *ngIf="Password.touched && Password.errors">
+        Introduzca una dirección de correo valida!
+      </mat-error>
+    </mat-form-field>
+
     <mat-form-field class="full-width">
       <mat-label>Nombre</mat-label>
-      <textarea matInput placeholder=""></textarea>
+      <textarea matInput formControlName="Name" placeholder=""></textarea>
+      <mat-error *ngIf="Name.touched && Name.errors">
+        Introduzca una dirección de correo valida!
+      </mat-error>
     </mat-form-field >
-    <br />
+
     <mat-form-field class="full-width" >
         <mat-label>Apellido</mat-label>
-        <textarea matInput placeholder=""></textarea>
+        <textarea matInput formControlName="Lastname" placeholder=""></textarea>
+        <mat-error *ngIf="Lastname.touched && Lastname.errors">
+          Introduzca una dirección de correo valida!
+        </mat-error>
     </mat-form-field>
-    <br />
+
     <mat-form-field class="full-width" >
         <mat-label>Nombre de Usuario</mat-label>
-        <textarea matInput placeholder=""></textarea>
+        <textarea matInput formControlName="Username" placeholder=""></textarea>
+        <mat-error *ngIf="Username.touched && Username.errors">
+          Introduzca una dirección de correo valida!
+        </mat-error>
     </mat-form-field>
-    <br />
+
     <mat-form-field class="full-width" >
         <mat-label>Credito</mat-label>
-        <textarea matInput placeholder=""></textarea>
+        <input matInput type="number" formControlName="Credit" placeholder="">
+        <mat-error *ngIf="Credit.touched && Credit.errors">
+          Introduzca una dirección de correo valida!
+        </mat-error>
     </mat-form-field>
-    <br />
-    <button mat-raised-button color="primary">Crear</button>
+
+    <button type="submit" mat-raised-button color="primary" class="full-width" >Crear</button>
   </form>

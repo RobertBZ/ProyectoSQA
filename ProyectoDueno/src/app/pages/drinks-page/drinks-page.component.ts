@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Drink } from 'src/app/models/IDrink';
+import { Observable } from 'rxjs';
+import { DrinksService } from 'src/app/services/drinks.service';
+import { MatDialog } from '@angular/material';
+import { DrinkModalComponent } from 'src/app/modals/drink-modal/drink-modal.component';
+import { DrinkEditModalComponent } from 'src/app/modals/drink-edit-modal/drink-edit-modal.component';
 
 @Component({
   selector: 'app-drinks-page',
@@ -7,9 +13,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrinksPageComponent implements OnInit {
 
-  constructor() { }
+  public isMobile: boolean = false;
+  drinks : Observable<Drink[]>;
+  constructor(
+    private drinkService : DrinksService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
+    this.drinks = this.drinkService.readDrinks();
+  }
+  
+  showData(data: any){
+    console.log(data);
   }
 
+  showViewDrinkModal(drink : Drink) {
+    this.dialog.open(DrinkModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
+
+  showCreateDrinkModal() {
+    this.dialog.open(DrinkEditModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
+
+  showEditDrinkModal(drink : Drink) {
+    this.dialog.open(DrinkEditModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
+
+  showDeleteDrinkModal(drink : Drink){
+    this.dialog.open(DrinkModalComponent, {
+      width: '500px',
+      data: { state: true }
+    });
+  }
 }

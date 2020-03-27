@@ -1,0 +1,24 @@
+.styleButton{
+    float: right;
+    margin: 10px 10px 10px 10px;
+}
+.grid-title {
+    position: absolute;
+    left: 5px;
+  }
+  
+  .grid-subtitle {
+    position: absolute;
+    right: 5px;
+  }
+  mat-card{
+    width: calc(100% - 45px);
+    height: calc(100% - 40px);
+    text-align: center;
+  }
+  
+  img{
+    width: 80%;
+    height: 75%;
+    background-size: cover;
+  }

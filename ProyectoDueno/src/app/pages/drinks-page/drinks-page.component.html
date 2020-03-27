@@ -1,1 +1,21 @@
-<p>drinks-page works!</p>
+<button mat-raised-button class="styleButton" color="primary" (click)="showCreateDrinkModal()">NUEVO</button>
+
+<div style="margin-top: 2%;">
+    <mat-grid-list style="margin-top: auto;" [cols]="isMobile ? 2 : 5">
+        <mat-grid-tile *ngFor="let drink of drinks | async">
+            <mat-card>
+                <img mat-card-md-image src={{drink.Photo}}>
+                <mat-card-actions>
+                    <button mat-button color="accent" [matMenuTriggerFor]="menu" >
+                        OPCIONES
+                    </button>
+                </mat-card-actions>
+                <mat-menu #menu="matMenu" yPosition="above" xPosition="before">
+                    <button mat-menu-item (click)="showViewDrinkModal(drink)">VER</button>
+                    <button mat-menu-item (click)="showEditDrinkModal(drink)">EDITAR</button>
+                    <button mat-menu-item (click)="showDeleteDrinkModal(drink)">ELIMINAR</button>
+                  </mat-menu>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
