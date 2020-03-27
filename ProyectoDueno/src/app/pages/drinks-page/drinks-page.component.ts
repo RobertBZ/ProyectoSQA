@@ -13,7 +13,6 @@ import { DrinkModalComponent } from 'src/app/modals/drink-modal/drink-modal.comp
 export class DrinksPageComponent implements OnInit {
 
   public isMobile: boolean = false;
-  drinksColumns: string[] = ['name'];
   drinks : Observable<Drink[]>;
   constructor(
     private drinkService : DrinksService,
