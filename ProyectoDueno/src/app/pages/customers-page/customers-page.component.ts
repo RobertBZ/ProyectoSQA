@@ -31,14 +31,14 @@ export class CustomersPageComponent implements OnInit {
   showCreateCustomerModal() {
     this.dialog.open(CustomerModalComponent, {
       width: '500px',
-      data: { state: true }
+      data: { isnew: true }
     });
   }
 
   showEditCustomerModal(customer : Client) {
     this.dialog.open(CustomerModalComponent, {
       width: '500px',
-      data: { state: true }
+      data: { cust : customer, isnew: false }
     });
   }
 
@@ -48,4 +48,5 @@ export class CustomersPageComponent implements OnInit {
       data: { state: true }
     });
   }
+
 }

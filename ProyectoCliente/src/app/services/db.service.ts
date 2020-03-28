@@ -36,6 +36,22 @@ export class DBService {
     }));
   }
 
+  readDocumentsByID<T extends IModel>(
+    collectionName : string,
+    id : string
+  ) {
+    return this.firestore.collection<T>( collectionName ).snapshotChanges().pipe(
+      map(data => {
+        return data.map(e => {
+          const Id = e.payload.doc.id;
+          const t = e.payload.doc.data() as T;
+          return { Id, ...t };
+        }).filter( element => !element.IsDeleted );
+      }),
+      map((collectionName) => collectionName.find(doc => doc.Id === id))
+      );
+  }
+
   updateDocument<T extends IModel>(
     collectionName: string, 
     data : T
