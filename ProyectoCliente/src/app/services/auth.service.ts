@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs';
+import { ClientsService } from './clients.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { BehaviorSubject } from 'rxjs';
+import { IClient } from '../models/IClient';
 
 
 @Injectable({
@@ -8,26 +10,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  userData: BehaviorSubject<any>;
+  userData: Observable<IClient>
 
-  constructor( private angularFireAuth : AngularFireAuth ) { 
+  constructor( private angularFireAuth : AngularFireAuth, private clientService : ClientsService ) { 
     angularFireAuth.auth.onAuthStateChanged((user) => {
       if (user) {
-        this.userData = new BehaviorSubject<any>({
-          DisplayName : user.displayName,
-          email : user.email,
-          emailVerified : user.emailVerified,
-          photoURL : user.photoURL,
-          isAnonymous : user.isAnonymous,
-          uid : user.uid,
-          providerData : user.providerData
-        });
+        this.userData = this.clientService.readClient(user.uid);
       } else {
         this.userData = null;
       }
     });
     angularFireAuth.auth.useDeviceLanguage();
-    console.log(this.userData);
   }
   
   signIn(email: string, password: string) {

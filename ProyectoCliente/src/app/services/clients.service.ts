@@ -19,6 +19,10 @@ export class ClientsService {
     return this.dbService.readDocuments<IClient>( this.collectionName );
   }
 
+  readClient( id : string ) {
+    return this.dbService.readDocumentsByID<IClient>( this.collectionName , id );
+  }
+
   updateClient( client : IClient ) {
     return this.dbService.updateDocument<IClient>( this.collectionName, client );
   }
