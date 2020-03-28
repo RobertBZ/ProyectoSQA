@@ -48,4 +48,5 @@ export class CustomersPageComponent implements OnInit {
       data: { state: true }
     });
   }
+
 }
