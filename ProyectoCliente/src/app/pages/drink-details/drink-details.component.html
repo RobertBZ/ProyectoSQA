@@ -16,7 +16,7 @@
                     <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
                     <mat-list *ngFor="let options of drink.AmountOptions">
                         <mat-list-item *ngIf="!loading"> 
-                            <button style="width: 100%;" mat-raised-button color="primary" (click)="selectOption()">- {{ options.Amount }}ml.: {{ options.Price | currency:'Bs.' }} </button>
+                            <button style="width: 100%;" mat-raised-button color="primary" (click)="selectOption(options)">- {{ options.Amount }}ml.: {{ options.Price | currency:'Bs.' }} </button>
                         </mat-list-item>
                        </mat-list>
                 </mat-dialog-content>

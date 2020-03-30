@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ClientsService } from './clients.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -10,15 +10,14 @@ import { Client } from '../models/IClient';
 })
 export class AuthService {
 
-  userID: string;
-  userData: Observable<Client>;
+  userData: Observable<Client | null>;
 
-  constructor( private angularFireAuth : AngularFireAuth ) { 
+  constructor( private angularFireAuth : AngularFireAuth, private clientsService : ClientsService ) { 
     angularFireAuth.auth.onAuthStateChanged((user) => {
       if (user) {
-        this.userID = user.uid;
+        this.userData = this.clientsService.readClient(user.uid);
       } else {
-        this.userID = null;
+        this.userData = of(null);
       }
     });
     angularFireAuth.auth.useDeviceLanguage();
@@ -36,7 +35,7 @@ export class AuthService {
       .signOut();
   } 
 
-  sendEmailVerification(email) {
+  sendEmailVerification( email ) {
     return this.angularFireAuth
       .auth
       .sendPasswordResetEmail(email);

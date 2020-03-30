@@ -1,10 +1,11 @@
 import { IModel } from './IModel';
+import * as firebase from 'firebase/app';
 
-export interface IUsage extends IModel{
+export interface IUsage extends IModel {
     Amount: number;
     ClientID: string;
     Name: string;
-    OrderDate: Date;
+    OrderDate: any;
     Photo: string;
     Price: number;
 }
@@ -15,7 +16,7 @@ export class Usage implements IUsage {
     ClientID: string;
     IsDeleted: boolean = false;
     Name: string;
-    OrderDate: Date;
+    OrderDate: any = firebase.firestore.FieldValue.serverTimestamp;
     Photo: string;
     Price: number;
 

@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.authService
       .signIn( "j.andrescastillo.711@gmail.com", "123456" )
       .then((data) => {
-        this.authService.userData = this.clientService.readClient(data.user.uid);
         this.router.navigate(['/home/drinks']);
       })
       .catch(err => {

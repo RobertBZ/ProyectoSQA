@@ -20,7 +20,8 @@ export class DrinkDetailsComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
-  selectOption(){
-    this.loading = true;
+  selectOption( option : any ) {
+    // this.loading = true;
+    
   }
 }
