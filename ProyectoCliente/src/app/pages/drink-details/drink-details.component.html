@@ -8,6 +8,20 @@
                 <mat-card-title>
                     {{ drink.Name }}
                 </mat-card-title>
+                <mat-divider></mat-divider>
+                <mat-dialog-content style="align-items: center;">
+                    <mat-card-subtitle style="text-align: left; margin-top: 5%;">
+                        Seleccione una opción:
+                    </mat-card-subtitle>
+                    <mat-list *ngFor="let options of drink.AmountOptions">
+                        <mat-list-item> 
+                            <button style="width: 100%;" mat-raised-button color="primary">- {{ options.Amount }}ml.: {{ options.Price }}Bs. </button>
+                        </mat-list-item>
+                       </mat-list>
+                </mat-dialog-content>
+                <mat-action-list style="margin-top: 100%;">
+                    <button style="width: 100%;" mat-raised-button color="warn" (click)="close()">Cancelar</button>
+                </mat-action-list>
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>

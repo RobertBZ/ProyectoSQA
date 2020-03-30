@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Client } from '../models/IClient';
 
 @Component({
   selector: 'app-pages',
@@ -8,13 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
-
-  constructor(private authService: AuthService, private router: Router) { }
-
-  Client : any =
-  { "Name" : "Jesus", "LastName" : "Aguilar", "Credits" : "2000"}
+  client : Observable<Client>;
+  constructor(private authService: AuthService, private router: Router) {
+   }
 
   ngOnInit() {
+    this.client = this.authService.userData;
   }
 
   signOut(){

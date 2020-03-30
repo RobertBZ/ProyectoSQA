@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ClientsService } from 'src/app/services/clients.service';
+import { Observable } from 'rxjs';
+import { Client } from 'src/app/models/IClient';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +11,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor( private authService : AuthService, private router: Router) {
+  constructor( private authService : AuthService, private router: Router,  private clientService : ClientsService) {
     
   }
 
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.authService
       .signIn( "j.andrescastillo.711@gmail.com", "123456" )
-      .then(() => {
+      .then((data) => {
+        this.authService.userData = this.clientService.readClient(data.user.uid);
         this.router.navigate(['/home/drinks']);
       })
       .catch(err => {

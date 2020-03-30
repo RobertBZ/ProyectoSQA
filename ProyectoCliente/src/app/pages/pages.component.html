@@ -1,11 +1,11 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer-content>
-        <mat-toolbar color="primary">
+        <mat-toolbar color="primary" *ngIf="(client | async) as cliente">
             <mat-label style="float: left; margin-left: 2%; margin-right: auto;">
-                {{Client.Name}} {{Client.LastName}}
+                {{ cliente.Name }} {{ cliente.Lastname }}
             </mat-label>
             <mat-label style="margin-right: 2%;">
-                Saldo: {{Client.Credits}} Bs.
+                Saldo: {{ cliente.Credit | currency: 'Bs.' }}
             </mat-label>
             <button mat-raised-button color="accent" (click)="signOut()">Salir</button>
         </mat-toolbar>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-drink-details',
@@ -9,10 +9,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DrinkDetailsComponent implements OnInit {
 
   drink: any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DrinkDetailsComponent>) {
     this.drink = data;
   }
 
   ngOnInit() {
+  }
+
+  close(){
+    this.dialogRef.close();
   }
 }

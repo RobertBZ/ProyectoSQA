@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { ClientsService } from './clients.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { IClient } from '../models/IClient';
+import { Client } from '../models/IClient';
 
 
 @Injectable({
@@ -10,14 +10,15 @@ import { IClient } from '../models/IClient';
 })
 export class AuthService {
 
-  userData: Observable<IClient>
+  userID: string;
+  userData: Observable<Client>;
 
-  constructor( private angularFireAuth : AngularFireAuth, private clientService : ClientsService ) { 
+  constructor( private angularFireAuth : AngularFireAuth ) { 
     angularFireAuth.auth.onAuthStateChanged((user) => {
       if (user) {
-        this.userData = this.clientService.readClient(user.uid);
+        this.userID = user.uid;
       } else {
-        this.userData = null;
+        this.userID = null;
       }
     });
     angularFireAuth.auth.useDeviceLanguage();
