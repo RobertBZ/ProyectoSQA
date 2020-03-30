@@ -44,8 +44,9 @@ export class CustomersPageComponent implements OnInit {
 
   showDeleteCustomerModal(customer : Client){
     this.dialog.open(CustomerDeleteModalComponent, {
-      width: '500px',
-      data: { state: true }
+      width: '250px',
+      data: customer
     });
   }
+
 }
