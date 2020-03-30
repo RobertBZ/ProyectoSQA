@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class DrinkDetailsComponent implements OnInit {
 
   drink: any;
+  loading: boolean = false;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DrinkDetailsComponent>) {
     this.drink = data;
   }
@@ -18,5 +19,8 @@ export class DrinkDetailsComponent implements OnInit {
 
   close(){
     this.dialogRef.close();
+  }
+  selectOption(){
+    this.loading = true;
   }
 }

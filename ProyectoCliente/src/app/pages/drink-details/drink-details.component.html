@@ -13,14 +13,15 @@
                     <mat-card-subtitle style="text-align: left; margin-top: 5%;">
                         Seleccione una opción:
                     </mat-card-subtitle>
+                    <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
                     <mat-list *ngFor="let options of drink.AmountOptions">
-                        <mat-list-item> 
-                            <button style="width: 100%;" mat-raised-button color="primary">- {{ options.Amount }}ml.: {{ options.Price }}Bs. </button>
+                        <mat-list-item *ngIf="!loading"> 
+                            <button style="width: 100%;" mat-raised-button color="primary" (click)="selectOption()">- {{ options.Amount }}ml.: {{ options.Price | currency:'Bs.' }} </button>
                         </mat-list-item>
                        </mat-list>
                 </mat-dialog-content>
                 <mat-action-list style="margin-top: 100%;">
-                    <button style="width: 100%;" mat-raised-button color="warn" (click)="close()">Cancelar</button>
+                    <button style="width: 100%;" mat-raised-button color="warn" (click)="close()" *ngIf="!loading">Cancelar</button>
                 </mat-action-list>
             </mat-card>
         </mat-grid-tile>
